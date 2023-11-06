@@ -39,6 +39,7 @@ DIVIDE: '/';
 MOD: '%';
 
 //Tokens for literals and identifiers
+STRING: '"' (.)+ '"' ;
 NUMBER: [0-9]+ ('.' [0-9]+)? ;
 IDENTIFIER: [a-zA-Z_][a-zA-Z_0-9]* ;
 
