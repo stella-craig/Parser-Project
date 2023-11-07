@@ -6,7 +6,7 @@ start: (statement)+ ;
 statement: assignment;
 
 assignment: IDENTIFIER ASSIGNMENT_OPERATOR expression 
-          | IDENTIFIER '=' literal;
+          | IDENTIFIER '=' literal;                 # handles assignment for regular literals
 
 //Handles the arithmetic operations
 expression: 
@@ -18,6 +18,7 @@ expression:
             | IDENTIFIER                            # Variable
             ;
 
+# literal definition
 literal: STRING
         | NUMBER
         | IDENTIFIER
