@@ -5,7 +5,8 @@ start: (statement)+ ;
 //A statement can be an assignment or expression for Deliverable 1
 statement: assignment;
 
-assignment: IDENTIFIER ASSIGNMENT_OPERATOR expression ;
+assignment: IDENTIFIER ASSIGNMENT_OPERATOR expression 
+          | IDENTIFIER '=' literal;
 
 //Handles the arithmetic operations
 expression: 
@@ -16,6 +17,13 @@ expression:
             | NUMBER                                # Number
             | IDENTIFIER                            # Variable
             ;
+
+literal: STRING
+        | NUMBER
+        | IDENTIFIER
+        | BOOL
+        | ARRAY
+        ;
 
 // Token for arrays
 ARRAY: ARRAY_BEGIN ;
@@ -43,8 +51,8 @@ STRING: '"' (.)+ '"'
         | ''' (.)+ ''';
 NUMBER: [0-9]+ ('.' [0-9]+)? ;
 IDENTIFIER: [a-zA-Z_][a-zA-Z_0-9]* ;
-INTEGER: [0-9]+;
-FLOAT: [0-9]*'.'[0-9]+;
+#INTEGER: [0-9]+;
+#FLOAT: [0-9]*'.'[0-9]+;
 BOOL: 'True'
       | 'False'
       ;
