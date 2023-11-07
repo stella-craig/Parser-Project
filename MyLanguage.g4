@@ -3,11 +3,9 @@ grammar MyLanguage;
 start: (statement)+ ;
 
 //A statement can be an assignment or expression for Deliverable 1
-statement: assignment
-            | expression
-            | ;
+statement: assignment;
 
-assignment: identifier assignment_operator expression ;
+assignment: IDENTIFIER ASSIGNMENT_OPERATOR expression ;
 
 //Handles the arithmetic operations
 expression: 
@@ -16,22 +14,24 @@ expression:
             | expression op=('%') expression        # Mod
             | '(' expression ')'                    # Parens
             | NUMBER                                # Number
-            | identifier                            # Variable
+            | IDENTIFIER                            # Variable
             ;
 
 // Token for arrays
 ARRAY: ARRAY_BEGIN ;
 ARRAY_BEGIN: '[' NUMBER CONTINUE_ARRAY
             | '[' IDENTIFIER CONTINUE_ARRAY
+            | '[' STRING CONTINUE_ARRAY
             ;
-CONTINUE_ARRAY: ',' NUMBER
-            | ',' IDENTIFIER
+CONTINUE_ARRAY: ',' NUMBER CONTINUE_ARRAY
+            | ',' IDENTIFIER CONTINUE_ARRAY
+            | ',' STRING CONTINUE_ARRAY
             | END_ARRAY
             ;
 END_ARRAY: ']';
 
 //Tokens for operators
-assignment_operator: '=' | '+=' | '-=' | '*=' | '/=' ;
+ASSIGNMENT_OPERATOR: '=' | '+=' | '-=' | '*=' | '/=' ;
 PLUS: '+' ;
 MINUS: '-' ;
 TIMES: '*';
@@ -39,9 +39,12 @@ DIVIDE: '/';
 MOD: '%';
 
 //Tokens for literals and identifiers
-STRING: '"' (.)+ '"' ;
+STRING: '"' (.)+ '"'
+        | ''' (.)+ ''';
 NUMBER: [0-9]+ ('.' [0-9]+)? ;
 IDENTIFIER: [a-zA-Z_][a-zA-Z_0-9]* ;
+INTEGER: [0-9]+;
+FLOAT: [0-9]*'.'[0-9]+;
 
 //Ignore whitespace
 WS: [ \t\r\n]+ -> skip ;
