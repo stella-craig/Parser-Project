@@ -6,7 +6,7 @@ from MyLanguageParser import MyLanguageParser
 
 #def main(argv):
 def main():
-	valid_strings = ["assign : 123", "assign = 123"]
+	valid_strings = ["assign l 123", "assign = 123"]
 	#inp_stream = FileStream(argv[1])
 	print("Valid Strings:")
 

@@ -20,10 +20,10 @@ public class MyLanguageParser extends Parser {
 		END_ARRAY=8, ASSIGNMENT_OPERATOR=9, PLUS=10, MINUS=11, TIMES=12, DIVIDE=13, 
 		MOD=14, STRING=15, NUMBER=16, IDENTIFIER=17, BOOL=18;
 	public static final int
-		RULE_start = 0, RULE_assignment = 1, RULE_expression = 2, RULE_literal = 3;
+		RULE_start = 0, RULE_statement = 1, RULE_expression = 2, RULE_literal = 3;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"start", "assignment", "expression", "literal"
+			"start", "statement", "expression", "literal"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -95,8 +95,8 @@ public class MyLanguageParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class StartContext extends ParserRuleContext {
-		public AssignmentContext assignment() {
-			return getRuleContext(AssignmentContext.class,0);
+		public StatementContext statement() {
+			return getRuleContext(StatementContext.class,0);
 		}
 		public TerminalNode EOF() { return getToken(MyLanguageParser.EOF, 0); }
 		public StartContext(ParserRuleContext parent, int invokingState) {
@@ -112,7 +112,7 @@ public class MyLanguageParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(8);
-			assignment();
+			statement();
 			setState(9);
 			match(EOF);
 			}
@@ -129,7 +129,7 @@ public class MyLanguageParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class AssignmentContext extends ParserRuleContext {
+	public static class StatementContext extends ParserRuleContext {
 		public TerminalNode IDENTIFIER() { return getToken(MyLanguageParser.IDENTIFIER, 0); }
 		public TerminalNode ASSIGNMENT_OPERATOR() { return getToken(MyLanguageParser.ASSIGNMENT_OPERATOR, 0); }
 		public ExpressionContext expression() {
@@ -138,15 +138,15 @@ public class MyLanguageParser extends Parser {
 		public LiteralContext literal() {
 			return getRuleContext(LiteralContext.class,0);
 		}
-		public AssignmentContext(ParserRuleContext parent, int invokingState) {
+		public StatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_assignment; }
+		@Override public int getRuleIndex() { return RULE_statement; }
 	}
 
-	public final AssignmentContext assignment() throws RecognitionException {
-		AssignmentContext _localctx = new AssignmentContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_assignment);
+	public final StatementContext statement() throws RecognitionException {
+		StatementContext _localctx = new StatementContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_statement);
 		try {
 			setState(17);
 			_errHandler.sync(this);

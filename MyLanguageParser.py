@@ -44,11 +44,11 @@ class MyLanguageParser ( Parser ):
                       "MOD", "STRING", "NUMBER", "IDENTIFIER", "BOOL" ]
 
     RULE_start = 0
-    RULE_assignment = 1
+    RULE_statement = 1
     RULE_expression = 2
     RULE_literal = 3
 
-    ruleNames =  [ "start", "assignment", "expression", "literal" ]
+    ruleNames =  [ "start", "statement", "expression", "literal" ]
 
     EOF = Token.EOF
     T__0=1
@@ -86,8 +86,8 @@ class MyLanguageParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def assignment(self):
-            return self.getTypedRuleContext(MyLanguageParser.AssignmentContext,0)
+        def statement(self):
+            return self.getTypedRuleContext(MyLanguageParser.StatementContext,0)
 
 
         def EOF(self):
@@ -114,7 +114,7 @@ class MyLanguageParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 8
-            self.assignment()
+            self.statement()
             self.state = 9
             self.match(MyLanguageParser.EOF)
         except RecognitionException as re:
@@ -126,7 +126,7 @@ class MyLanguageParser ( Parser ):
         return localctx
 
 
-    class AssignmentContext(ParserRuleContext):
+    class StatementContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -148,23 +148,23 @@ class MyLanguageParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return MyLanguageParser.RULE_assignment
+            return MyLanguageParser.RULE_statement
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAssignment" ):
-                listener.enterAssignment(self)
+            if hasattr( listener, "enterStatement" ):
+                listener.enterStatement(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAssignment" ):
-                listener.exitAssignment(self)
+            if hasattr( listener, "exitStatement" ):
+                listener.exitStatement(self)
 
 
 
 
-    def assignment(self):
+    def statement(self):
 
-        localctx = MyLanguageParser.AssignmentContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 2, self.RULE_assignment)
+        localctx = MyLanguageParser.StatementContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 2, self.RULE_statement)
         try:
             self.state = 17
             self._errHandler.sync(self)

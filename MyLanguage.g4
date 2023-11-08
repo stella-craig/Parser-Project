@@ -1,13 +1,13 @@
 //My Language
 grammar MyLanguage;
 
-start: assignment EOF;
+start: statement EOF;
 
 //Ignore whitespace
 WS: [ \t\r\n]+ -> skip ;
 
 //A statement can be an assignment or expression for Deliverable 1
-assignment: IDENTIFIER ASSIGNMENT_OPERATOR expression 
+statement: IDENTIFIER ASSIGNMENT_OPERATOR expression
           | IDENTIFIER '=' literal;                 // handles assignment for regular literals
 
 //Handles the arithmetic operations

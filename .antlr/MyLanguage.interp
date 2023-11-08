@@ -42,7 +42,7 @@ BOOL
 
 rule names:
 start
-assignment
+statement
 expression
 literal
 
