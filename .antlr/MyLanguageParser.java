@@ -16,9 +16,9 @@ public class MyLanguageParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, WS=4, ARRAY=5, ARRAY_BEGIN=6, CONTINUE_ARRAY=7, 
-		END_ARRAY=8, LITERAL=9, ASSIGNMENT_OPERATOR=10, PLUS=11, MINUS=12, TIMES=13, 
-		DIVIDE=14, MOD=15, STRING=16, NUMBER=17, IDENTIFIER=18, BOOL=19;
+		T__0=1, T__1=2, T__2=3, WS=4, LITERAL=5, ARRAY=6, ARRAY_BEGIN=7, CONTINUE_ARRAY=8, 
+		END_ARRAY=9, ASSIGNMENT_OPERATOR=10, PLUS=11, MINUS=12, TIMES=13, DIVIDE=14, 
+		MOD=15, STRING=16, NUMBER=17, IDENTIFIER=18, BOOL=19;
 	public static final int
 		RULE_start = 0, RULE_statement = 1, RULE_expression = 2;
 	private static String[] makeRuleNames() {
@@ -30,16 +30,16 @@ public class MyLanguageParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'='", "'('", "')'", null, null, null, null, "']'", null, null, 
+			null, "'='", "'('", "')'", null, null, null, null, null, "']'", null, 
 			"'+'", "'-'", "'*'", "'/'", "'%'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "WS", "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", 
-			"END_ARRAY", "LITERAL", "ASSIGNMENT_OPERATOR", "PLUS", "MINUS", "TIMES", 
-			"DIVIDE", "MOD", "STRING", "NUMBER", "IDENTIFIER", "BOOL"
+			null, null, null, null, "WS", "LITERAL", "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", 
+			"END_ARRAY", "ASSIGNMENT_OPERATOR", "PLUS", "MINUS", "TIMES", "DIVIDE", 
+			"MOD", "STRING", "NUMBER", "IDENTIFIER", "BOOL"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -325,7 +325,7 @@ public class MyLanguageParser extends Parser {
 		"\u0000\u0007\b\u0005\u0000\u0000\u0001\b\u0001\u0001\u0000\u0000\u0000"+
 		"\t\n\u0005\u0012\u0000\u0000\n\u000b\u0005\n\u0000\u0000\u000b\u0010\u0003"+
 		"\u0004\u0002\u0000\f\r\u0005\u0012\u0000\u0000\r\u000e\u0005\u0001\u0000"+
-		"\u0000\u000e\u0010\u0005\t\u0000\u0000\u000f\t\u0001\u0000\u0000\u0000"+
+		"\u0000\u000e\u0010\u0005\u0005\u0000\u0000\u000f\t\u0001\u0000\u0000\u0000"+
 		"\u000f\f\u0001\u0000\u0000\u0000\u0010\u0003\u0001\u0000\u0000\u0000\u0011"+
 		"\u0012\u0006\u0002\uffff\uffff\u0000\u0012\u0013\u0005\u0002\u0000\u0000"+
 		"\u0013\u0014\u0003\u0004\u0002\u0000\u0014\u0015\u0005\u0003\u0000\u0000"+

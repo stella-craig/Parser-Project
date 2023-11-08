@@ -18,15 +18,6 @@ expression:
             | IDENTIFIER                            // Variable
             ;
 
-// Token for arrays since arrays in python can hold anything it just takes a literal
-ARRAY: ARRAY_BEGIN ;
-ARRAY_BEGIN: '[' LITERAL CONTINUE_ARRAY
-            ;
-CONTINUE_ARRAY: ',' LITERAL CONTINUE_ARRAY
-            | END_ARRAY
-            ;
-END_ARRAY: ']';
-
 // literal definition
 LITERAL: STRING
         | NUMBER
@@ -34,6 +25,15 @@ LITERAL: STRING
         | BOOL
         | ARRAY
         ;
+
+// Token for arrays since arrays in python can hold anything it just takes any string, bool, number, or identifier
+ARRAY: ARRAY_BEGIN ;
+ARRAY_BEGIN: '[' (STRING|BOOL|NUMBER|IDENTIFIER) CONTINUE_ARRAY
+            ;
+CONTINUE_ARRAY: ',' (STRING|BOOL|NUMBER|IDENTIFIER) CONTINUE_ARRAY
+            | END_ARRAY
+            ;
+END_ARRAY: ']';
 
 //Tokens for operators
 ASSIGNMENT_OPERATOR: '=' | '+=' | '-=' | '*=' | '/=' ;

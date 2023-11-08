@@ -35,14 +35,5 @@ class MyLanguageListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MyLanguageParser#literal.
-    def enterLiteral(self, ctx:MyLanguageParser.LiteralContext):
-        pass
-
-    # Exit a parse tree produced by MyLanguageParser#literal.
-    def exitLiteral(self, ctx:MyLanguageParser.LiteralContext):
-        pass
-
-
 
 del MyLanguageParser
