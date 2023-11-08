@@ -1,7 +1,11 @@
 //My Language
 grammar MyLanguage;
 
-start: statement EOF;
+start: statement;
+//Ignore whitespace rule
+WS: [ \t\r\n]+ -> skip ;
+
+IDENTIFIER: [a-zA-Z_] [a-zA-Z_0-9]*;
 
 //A statement can be an assignment or expression for Deliverable 1
 statement: IDENTIFIER ASSIGNMENT_OPERATOR expression
@@ -15,15 +19,7 @@ expression:
             | IDENTIFIER                            // Variable
             ;
 
-// literal definition
-LITERAL: STRING
-        | NUMBER
-        | IDENTIFIER
-        | BOOL
-        | ARRAY
-        ;
-
-// Token for arrays since arrays in python can hold anything it just takes any string, bool, number, or identifier
+// Token for arrays since arrays in python can hold anything it just takes any string, bool, number, or IDENTIFIER
 ARRAY: ARRAY_BEGIN ;
 ARRAY_BEGIN: '[' (STRING|BOOL|NUMBER|IDENTIFIER) CONTINUE_ARRAY
             ;
@@ -40,13 +36,17 @@ TIMES: '*';
 DIVIDE: '/';
 MOD: '%';
 
-//Tokens for literals and identifiers
-STRING: '"' [.]+ '"' | '\'' [.]+ '\'';
+// literal definition
+LITERAL: STRING
+        | NUMBER
+        | IDENTIFIER
+        | BOOL
+        | ARRAY
+        ;
+
+//Tokens for literals and IDENTIFIERs
 NUMBER: [0-9]+ ('.' [0-9]+)? ;
-IDENTIFIER: [a-zA-Z_] [a-zA-Z_0-9]*;
 BOOL: 'True'
       | 'False'
       ;
-
-//Ignore whitespace rule
-WS: [ \t\r\n]+ -> skip ;
+STRING: '"' IDENTIFIER '"' | '\'' IDENTIFIER '\'' | '"' NUMBER '"';
