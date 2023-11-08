@@ -3,7 +3,7 @@ grammar MyLanguage;
 
 start: statement EOF;
 
-//Ignore whitespace
+//Ignore whitespace rule
 WS: [ \t\r\n]+ -> skip ;
 
 //A statement can be an assignment or expression for Deliverable 1
@@ -46,7 +46,9 @@ MOD: '%';
 //Tokens for literals and identifiers
 STRING: '"' [.]+ '"' | '\'' [.]+ '\'';
 NUMBER: [0-9]+ ('.' [0-9]+)? ;
-IDENTIFIER: [a-zA-Z_][a-zA-Z_0-9]* ;
+IDENTIFIER: [a-zA-Z_] [a-zA-Z_0-9]*;
 BOOL: 'True'
       | 'False'
       ;
+
+// WHITESPACE: [ \t\r\n]+ ;
