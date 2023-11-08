@@ -16,9 +16,9 @@ public class MyLanguageParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, ARRAY=4, ARRAY_BEGIN=5, CONTINUE_ARRAY=6, END_ARRAY=7, 
-		ASSIGNMENT_OPERATOR=8, PLUS=9, MINUS=10, TIMES=11, DIVIDE=12, MOD=13, 
-		STRING=14, NUMBER=15, IDENTIFIER=16, BOOL=17, WS=18;
+		T__0=1, T__1=2, T__2=3, WS=4, ARRAY=5, ARRAY_BEGIN=6, CONTINUE_ARRAY=7, 
+		END_ARRAY=8, ASSIGNMENT_OPERATOR=9, PLUS=10, MINUS=11, TIMES=12, DIVIDE=13, 
+		MOD=14, STRING=15, NUMBER=16, IDENTIFIER=17, BOOL=18;
 	public static final int
 		RULE_start = 0, RULE_assignment = 1, RULE_expression = 2, RULE_literal = 3;
 	private static String[] makeRuleNames() {
@@ -30,16 +30,16 @@ public class MyLanguageParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'='", "'('", "')'", null, null, null, "']'", null, "'+'", "'-'", 
-			"'*'", "'/'", "'%'"
+			null, "'='", "'('", "')'", null, null, null, null, "']'", null, "'+'", 
+			"'-'", "'*'", "'/'", "'%'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", "END_ARRAY", 
-			"ASSIGNMENT_OPERATOR", "PLUS", "MINUS", "TIMES", "DIVIDE", "MOD", "STRING", 
-			"NUMBER", "IDENTIFIER", "BOOL", "WS"
+			null, null, null, null, "WS", "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", 
+			"END_ARRAY", "ASSIGNMENT_OPERATOR", "PLUS", "MINUS", "TIMES", "DIVIDE", 
+			"MOD", "STRING", "NUMBER", "IDENTIFIER", "BOOL"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -269,7 +269,7 @@ public class MyLanguageParser extends Parser {
 					setState(29);
 					((ExpressionContext)_localctx).op = _input.LT(1);
 					_la = _input.LA(1);
-					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 15872L) != 0)) ) {
+					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 31744L) != 0)) ) {
 						((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 					}
 					else {
@@ -321,7 +321,7 @@ public class MyLanguageParser extends Parser {
 			{
 			setState(36);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 245776L) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 491552L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -365,18 +365,18 @@ public class MyLanguageParser extends Parser {
 		"\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0003\u0002\u001b\b\u0002\u0001"+
 		"\u0002\u0001\u0002\u0001\u0002\u0005\u0002 \b\u0002\n\u0002\f\u0002#\t"+
 		"\u0002\u0001\u0003\u0001\u0003\u0001\u0003\u0000\u0001\u0004\u0004\u0000"+
-		"\u0002\u0004\u0006\u0000\u0002\u0001\u0000\t\r\u0002\u0000\u0004\u0004"+
-		"\u000e\u0011&\u0000\b\u0001\u0000\u0000\u0000\u0002\u0011\u0001\u0000"+
+		"\u0002\u0004\u0006\u0000\u0002\u0001\u0000\n\u000e\u0002\u0000\u0005\u0005"+
+		"\u000f\u0012&\u0000\b\u0001\u0000\u0000\u0000\u0002\u0011\u0001\u0000"+
 		"\u0000\u0000\u0004\u001a\u0001\u0000\u0000\u0000\u0006$\u0001\u0000\u0000"+
 		"\u0000\b\t\u0003\u0002\u0001\u0000\t\n\u0005\u0000\u0000\u0001\n\u0001"+
-		"\u0001\u0000\u0000\u0000\u000b\f\u0005\u0010\u0000\u0000\f\r\u0005\b\u0000"+
-		"\u0000\r\u0012\u0003\u0004\u0002\u0000\u000e\u000f\u0005\u0010\u0000\u0000"+
+		"\u0001\u0000\u0000\u0000\u000b\f\u0005\u0011\u0000\u0000\f\r\u0005\t\u0000"+
+		"\u0000\r\u0012\u0003\u0004\u0002\u0000\u000e\u000f\u0005\u0011\u0000\u0000"+
 		"\u000f\u0010\u0005\u0001\u0000\u0000\u0010\u0012\u0003\u0006\u0003\u0000"+
 		"\u0011\u000b\u0001\u0000\u0000\u0000\u0011\u000e\u0001\u0000\u0000\u0000"+
 		"\u0012\u0003\u0001\u0000\u0000\u0000\u0013\u0014\u0006\u0002\uffff\uffff"+
 		"\u0000\u0014\u0015\u0005\u0002\u0000\u0000\u0015\u0016\u0003\u0004\u0002"+
 		"\u0000\u0016\u0017\u0005\u0003\u0000\u0000\u0017\u001b\u0001\u0000\u0000"+
-		"\u0000\u0018\u001b\u0005\u000f\u0000\u0000\u0019\u001b\u0005\u0010\u0000"+
+		"\u0000\u0018\u001b\u0005\u0010\u0000\u0000\u0019\u001b\u0005\u0011\u0000"+
 		"\u0000\u001a\u0013\u0001\u0000\u0000\u0000\u001a\u0018\u0001\u0000\u0000"+
 		"\u0000\u001a\u0019\u0001\u0000\u0000\u0000\u001b!\u0001\u0000\u0000\u0000"+
 		"\u001c\u001d\n\u0004\u0000\u0000\u001d\u001e\u0007\u0000\u0000\u0000\u001e"+

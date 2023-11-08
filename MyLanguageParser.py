@@ -13,12 +13,12 @@ def serializedATN():
         4,1,18,39,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,1,0,1,0,1,1,1,1,1,
         1,1,1,1,1,1,1,3,1,18,8,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,27,8,2,
         1,2,1,2,1,2,5,2,32,8,2,10,2,12,2,35,9,2,1,3,1,3,1,3,0,1,4,4,0,2,
-        4,6,0,2,1,0,9,13,2,0,4,4,14,17,38,0,8,1,0,0,0,2,17,1,0,0,0,4,26,
+        4,6,0,2,1,0,10,14,2,0,5,5,15,18,38,0,8,1,0,0,0,2,17,1,0,0,0,4,26,
         1,0,0,0,6,36,1,0,0,0,8,9,3,2,1,0,9,10,5,0,0,1,10,1,1,0,0,0,11,12,
-        5,16,0,0,12,13,5,8,0,0,13,18,3,4,2,0,14,15,5,16,0,0,15,16,5,1,0,
+        5,17,0,0,12,13,5,9,0,0,13,18,3,4,2,0,14,15,5,17,0,0,15,16,5,1,0,
         0,16,18,3,6,3,0,17,11,1,0,0,0,17,14,1,0,0,0,18,3,1,0,0,0,19,20,6,
         2,-1,0,20,21,5,2,0,0,21,22,3,4,2,0,22,23,5,3,0,0,23,27,1,0,0,0,24,
-        27,5,15,0,0,25,27,5,16,0,0,26,19,1,0,0,0,26,24,1,0,0,0,26,25,1,0,
+        27,5,16,0,0,25,27,5,17,0,0,26,19,1,0,0,0,26,24,1,0,0,0,26,25,1,0,
         0,0,27,33,1,0,0,0,28,29,10,4,0,0,29,30,7,0,0,0,30,32,3,4,2,5,31,
         28,1,0,0,0,32,35,1,0,0,0,33,31,1,0,0,0,33,34,1,0,0,0,34,5,1,0,0,
         0,35,33,1,0,0,0,36,37,7,1,0,0,37,7,1,0,0,0,3,17,26,33
@@ -35,13 +35,13 @@ class MyLanguageParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'='", "'('", "')'", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "']'", "<INVALID>", "'+'", "'-'", "'*'", 
-                     "'/'", "'%'" ]
+                     "<INVALID>", "<INVALID>", "']'", "<INVALID>", "'+'", 
+                     "'-'", "'*'", "'/'", "'%'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", "END_ARRAY", 
+                      "WS", "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", "END_ARRAY", 
                       "ASSIGNMENT_OPERATOR", "PLUS", "MINUS", "TIMES", "DIVIDE", 
-                      "MOD", "STRING", "NUMBER", "IDENTIFIER", "BOOL", "WS" ]
+                      "MOD", "STRING", "NUMBER", "IDENTIFIER", "BOOL" ]
 
     RULE_start = 0
     RULE_assignment = 1
@@ -54,21 +54,21 @@ class MyLanguageParser ( Parser ):
     T__0=1
     T__1=2
     T__2=3
-    ARRAY=4
-    ARRAY_BEGIN=5
-    CONTINUE_ARRAY=6
-    END_ARRAY=7
-    ASSIGNMENT_OPERATOR=8
-    PLUS=9
-    MINUS=10
-    TIMES=11
-    DIVIDE=12
-    MOD=13
-    STRING=14
-    NUMBER=15
-    IDENTIFIER=16
-    BOOL=17
-    WS=18
+    WS=4
+    ARRAY=5
+    ARRAY_BEGIN=6
+    CONTINUE_ARRAY=7
+    END_ARRAY=8
+    ASSIGNMENT_OPERATOR=9
+    PLUS=10
+    MINUS=11
+    TIMES=12
+    DIVIDE=13
+    MOD=14
+    STRING=15
+    NUMBER=16
+    IDENTIFIER=17
+    BOOL=18
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -269,11 +269,11 @@ class MyLanguageParser ( Parser ):
                 self.state = 22
                 self.match(MyLanguageParser.T__2)
                 pass
-            elif token in [15]:
+            elif token in [16]:
                 self.state = 24
                 self.match(MyLanguageParser.NUMBER)
                 pass
-            elif token in [16]:
+            elif token in [17]:
                 self.state = 25
                 self.match(MyLanguageParser.IDENTIFIER)
                 pass
@@ -298,7 +298,7 @@ class MyLanguageParser ( Parser ):
                     self.state = 29
                     localctx.op = self._input.LT(1)
                     _la = self._input.LA(1)
-                    if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 15872) != 0)):
+                    if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 31744) != 0)):
                         localctx.op = self._errHandler.recoverInline(self)
                     else:
                         self._errHandler.reportMatch(self)
@@ -363,7 +363,7 @@ class MyLanguageParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 36
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 245776) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 491552) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)

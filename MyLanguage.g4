@@ -3,6 +3,9 @@ grammar MyLanguage;
 
 start: assignment EOF;
 
+//Ignore whitespace
+WS: [ \t\r\n]+ -> skip ;
+
 //A statement can be an assignment or expression for Deliverable 1
 assignment: IDENTIFIER ASSIGNMENT_OPERATOR expression 
           | IDENTIFIER '=' literal;                 // handles assignment for regular literals
@@ -45,12 +48,9 @@ DIVIDE: '/';
 MOD: '%';
 
 //Tokens for literals and identifiers
-STRING: '"' ('\\' ["\\] | ~["\\\r\n])* '"';
+STRING: '"' [.]+ '"' | '\'' [.]+ '\'';
 NUMBER: [0-9]+ ('.' [0-9]+)? ;
 IDENTIFIER: [a-zA-Z_][a-zA-Z_0-9]* ;
 BOOL: 'True'
       | 'False'
       ;
-
-//Ignore whitespace
-WS: [ \t\r\n]+ -> skip ;
