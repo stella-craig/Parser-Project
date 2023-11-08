@@ -3,9 +3,6 @@ grammar MyLanguage;
 
 start: statement EOF;
 
-//Ignore whitespace rule
-WS: [ \t\r\n]+ -> skip ;
-
 //A statement can be an assignment or expression for Deliverable 1
 statement: IDENTIFIER ASSIGNMENT_OPERATOR expression
           | IDENTIFIER '=' LITERAL;                 // handles assignment for regular literals
@@ -51,4 +48,5 @@ BOOL: 'True'
       | 'False'
       ;
 
-// WHITESPACE: [ \t\r\n]+ ;
+//Ignore whitespace rule
+WS: [ \t\r\n]+ -> skip ;

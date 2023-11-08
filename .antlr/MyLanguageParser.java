@@ -16,9 +16,9 @@ public class MyLanguageParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, WS=4, LITERAL=5, ARRAY=6, ARRAY_BEGIN=7, CONTINUE_ARRAY=8, 
-		END_ARRAY=9, ASSIGNMENT_OPERATOR=10, PLUS=11, MINUS=12, TIMES=13, DIVIDE=14, 
-		MOD=15, STRING=16, NUMBER=17, IDENTIFIER=18, BOOL=19;
+		T__0=1, T__1=2, T__2=3, LITERAL=4, ARRAY=5, ARRAY_BEGIN=6, CONTINUE_ARRAY=7, 
+		END_ARRAY=8, ASSIGNMENT_OPERATOR=9, PLUS=10, MINUS=11, TIMES=12, DIVIDE=13, 
+		MOD=14, STRING=15, NUMBER=16, IDENTIFIER=17, BOOL=18, WS=19;
 	public static final int
 		RULE_start = 0, RULE_statement = 1, RULE_expression = 2;
 	private static String[] makeRuleNames() {
@@ -30,16 +30,16 @@ public class MyLanguageParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'='", "'('", "')'", null, null, null, null, null, "']'", null, 
-			"'+'", "'-'", "'*'", "'/'", "'%'"
+			null, "'='", "'('", "')'", null, null, null, null, "']'", null, "'+'", 
+			"'-'", "'*'", "'/'", "'%'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "WS", "LITERAL", "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", 
+			null, null, null, null, "LITERAL", "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", 
 			"END_ARRAY", "ASSIGNMENT_OPERATOR", "PLUS", "MINUS", "TIMES", "DIVIDE", 
-			"MOD", "STRING", "NUMBER", "IDENTIFIER", "BOOL"
+			"MOD", "STRING", "NUMBER", "IDENTIFIER", "BOOL", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -267,7 +267,7 @@ public class MyLanguageParser extends Parser {
 					setState(27);
 					((ExpressionContext)_localctx).op = _input.LT(1);
 					_la = _input.LA(1);
-					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 63488L) != 0)) ) {
+					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 31744L) != 0)) ) {
 						((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 					}
 					else {
@@ -319,24 +319,24 @@ public class MyLanguageParser extends Parser {
 		"\b\u0001\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001"+
 		"\u0002\u0001\u0002\u0003\u0002\u0019\b\u0002\u0001\u0002\u0001\u0002\u0001"+
 		"\u0002\u0005\u0002\u001e\b\u0002\n\u0002\f\u0002!\t\u0002\u0001\u0002"+
-		"\u0000\u0001\u0004\u0003\u0000\u0002\u0004\u0000\u0001\u0001\u0000\u000b"+
-		"\u000f#\u0000\u0006\u0001\u0000\u0000\u0000\u0002\u000f\u0001\u0000\u0000"+
-		"\u0000\u0004\u0018\u0001\u0000\u0000\u0000\u0006\u0007\u0003\u0002\u0001"+
-		"\u0000\u0007\b\u0005\u0000\u0000\u0001\b\u0001\u0001\u0000\u0000\u0000"+
-		"\t\n\u0005\u0012\u0000\u0000\n\u000b\u0005\n\u0000\u0000\u000b\u0010\u0003"+
-		"\u0004\u0002\u0000\f\r\u0005\u0012\u0000\u0000\r\u000e\u0005\u0001\u0000"+
-		"\u0000\u000e\u0010\u0005\u0005\u0000\u0000\u000f\t\u0001\u0000\u0000\u0000"+
-		"\u000f\f\u0001\u0000\u0000\u0000\u0010\u0003\u0001\u0000\u0000\u0000\u0011"+
-		"\u0012\u0006\u0002\uffff\uffff\u0000\u0012\u0013\u0005\u0002\u0000\u0000"+
-		"\u0013\u0014\u0003\u0004\u0002\u0000\u0014\u0015\u0005\u0003\u0000\u0000"+
-		"\u0015\u0019\u0001\u0000\u0000\u0000\u0016\u0019\u0005\u0011\u0000\u0000"+
-		"\u0017\u0019\u0005\u0012\u0000\u0000\u0018\u0011\u0001\u0000\u0000\u0000"+
-		"\u0018\u0016\u0001\u0000\u0000\u0000\u0018\u0017\u0001\u0000\u0000\u0000"+
-		"\u0019\u001f\u0001\u0000\u0000\u0000\u001a\u001b\n\u0004\u0000\u0000\u001b"+
-		"\u001c\u0007\u0000\u0000\u0000\u001c\u001e\u0003\u0004\u0002\u0005\u001d"+
-		"\u001a\u0001\u0000\u0000\u0000\u001e!\u0001\u0000\u0000\u0000\u001f\u001d"+
-		"\u0001\u0000\u0000\u0000\u001f \u0001\u0000\u0000\u0000 \u0005\u0001\u0000"+
-		"\u0000\u0000!\u001f\u0001\u0000\u0000\u0000\u0003\u000f\u0018\u001f";
+		"\u0000\u0001\u0004\u0003\u0000\u0002\u0004\u0000\u0001\u0001\u0000\n\u000e"+
+		"#\u0000\u0006\u0001\u0000\u0000\u0000\u0002\u000f\u0001\u0000\u0000\u0000"+
+		"\u0004\u0018\u0001\u0000\u0000\u0000\u0006\u0007\u0003\u0002\u0001\u0000"+
+		"\u0007\b\u0005\u0000\u0000\u0001\b\u0001\u0001\u0000\u0000\u0000\t\n\u0005"+
+		"\u0011\u0000\u0000\n\u000b\u0005\t\u0000\u0000\u000b\u0010\u0003\u0004"+
+		"\u0002\u0000\f\r\u0005\u0011\u0000\u0000\r\u000e\u0005\u0001\u0000\u0000"+
+		"\u000e\u0010\u0005\u0004\u0000\u0000\u000f\t\u0001\u0000\u0000\u0000\u000f"+
+		"\f\u0001\u0000\u0000\u0000\u0010\u0003\u0001\u0000\u0000\u0000\u0011\u0012"+
+		"\u0006\u0002\uffff\uffff\u0000\u0012\u0013\u0005\u0002\u0000\u0000\u0013"+
+		"\u0014\u0003\u0004\u0002\u0000\u0014\u0015\u0005\u0003\u0000\u0000\u0015"+
+		"\u0019\u0001\u0000\u0000\u0000\u0016\u0019\u0005\u0010\u0000\u0000\u0017"+
+		"\u0019\u0005\u0011\u0000\u0000\u0018\u0011\u0001\u0000\u0000\u0000\u0018"+
+		"\u0016\u0001\u0000\u0000\u0000\u0018\u0017\u0001\u0000\u0000\u0000\u0019"+
+		"\u001f\u0001\u0000\u0000\u0000\u001a\u001b\n\u0004\u0000\u0000\u001b\u001c"+
+		"\u0007\u0000\u0000\u0000\u001c\u001e\u0003\u0004\u0002\u0005\u001d\u001a"+
+		"\u0001\u0000\u0000\u0000\u001e!\u0001\u0000\u0000\u0000\u001f\u001d\u0001"+
+		"\u0000\u0000\u0000\u001f \u0001\u0000\u0000\u0000 \u0005\u0001\u0000\u0000"+
+		"\u0000!\u001f\u0001\u0000\u0000\u0000\u0003\u000f\u0018\u001f";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

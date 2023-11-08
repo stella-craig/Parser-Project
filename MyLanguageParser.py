@@ -12,12 +12,12 @@ def serializedATN():
     return [
         4,1,19,35,2,0,7,0,2,1,7,1,2,2,7,2,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,
         1,1,1,3,1,16,8,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,25,8,2,1,2,1,2,
-        1,2,5,2,30,8,2,10,2,12,2,33,9,2,1,2,0,1,4,3,0,2,4,0,1,1,0,11,15,
+        1,2,5,2,30,8,2,10,2,12,2,33,9,2,1,2,0,1,4,3,0,2,4,0,1,1,0,10,14,
         35,0,6,1,0,0,0,2,15,1,0,0,0,4,24,1,0,0,0,6,7,3,2,1,0,7,8,5,0,0,1,
-        8,1,1,0,0,0,9,10,5,18,0,0,10,11,5,10,0,0,11,16,3,4,2,0,12,13,5,18,
-        0,0,13,14,5,1,0,0,14,16,5,5,0,0,15,9,1,0,0,0,15,12,1,0,0,0,16,3,
+        8,1,1,0,0,0,9,10,5,17,0,0,10,11,5,9,0,0,11,16,3,4,2,0,12,13,5,17,
+        0,0,13,14,5,1,0,0,14,16,5,4,0,0,15,9,1,0,0,0,15,12,1,0,0,0,16,3,
         1,0,0,0,17,18,6,2,-1,0,18,19,5,2,0,0,19,20,3,4,2,0,20,21,5,3,0,0,
-        21,25,1,0,0,0,22,25,5,17,0,0,23,25,5,18,0,0,24,17,1,0,0,0,24,22,
+        21,25,1,0,0,0,22,25,5,16,0,0,23,25,5,17,0,0,24,17,1,0,0,0,24,22,
         1,0,0,0,24,23,1,0,0,0,25,31,1,0,0,0,26,27,10,4,0,0,27,28,7,0,0,0,
         28,30,3,4,2,5,29,26,1,0,0,0,30,33,1,0,0,0,31,29,1,0,0,0,31,32,1,
         0,0,0,32,5,1,0,0,0,33,31,1,0,0,0,3,15,24,31
@@ -34,14 +34,14 @@ class MyLanguageParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'='", "'('", "')'", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "']'", "<INVALID>", 
-                     "'+'", "'-'", "'*'", "'/'", "'%'" ]
+                     "<INVALID>", "<INVALID>", "']'", "<INVALID>", "'+'", 
+                     "'-'", "'*'", "'/'", "'%'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "WS", "LITERAL", "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", 
+                      "LITERAL", "ARRAY", "ARRAY_BEGIN", "CONTINUE_ARRAY", 
                       "END_ARRAY", "ASSIGNMENT_OPERATOR", "PLUS", "MINUS", 
                       "TIMES", "DIVIDE", "MOD", "STRING", "NUMBER", "IDENTIFIER", 
-                      "BOOL" ]
+                      "BOOL", "WS" ]
 
     RULE_start = 0
     RULE_statement = 1
@@ -53,22 +53,22 @@ class MyLanguageParser ( Parser ):
     T__0=1
     T__1=2
     T__2=3
-    WS=4
-    LITERAL=5
-    ARRAY=6
-    ARRAY_BEGIN=7
-    CONTINUE_ARRAY=8
-    END_ARRAY=9
-    ASSIGNMENT_OPERATOR=10
-    PLUS=11
-    MINUS=12
-    TIMES=13
-    DIVIDE=14
-    MOD=15
-    STRING=16
-    NUMBER=17
-    IDENTIFIER=18
-    BOOL=19
+    LITERAL=4
+    ARRAY=5
+    ARRAY_BEGIN=6
+    CONTINUE_ARRAY=7
+    END_ARRAY=8
+    ASSIGNMENT_OPERATOR=9
+    PLUS=10
+    MINUS=11
+    TIMES=12
+    DIVIDE=13
+    MOD=14
+    STRING=15
+    NUMBER=16
+    IDENTIFIER=17
+    BOOL=18
+    WS=19
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -268,11 +268,11 @@ class MyLanguageParser ( Parser ):
                 self.state = 20
                 self.match(MyLanguageParser.T__2)
                 pass
-            elif token in [17]:
+            elif token in [16]:
                 self.state = 22
                 self.match(MyLanguageParser.NUMBER)
                 pass
-            elif token in [18]:
+            elif token in [17]:
                 self.state = 23
                 self.match(MyLanguageParser.IDENTIFIER)
                 pass
@@ -297,7 +297,7 @@ class MyLanguageParser ( Parser ):
                     self.state = 27
                     localctx.op = self._input.LT(1)
                     _la = self._input.LA(1)
-                    if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 63488) != 0)):
+                    if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 31744) != 0)):
                         localctx.op = self._errHandler.recoverInline(self)
                     else:
                         self._errHandler.reportMatch(self)
