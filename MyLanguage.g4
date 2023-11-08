@@ -1,24 +1,21 @@
 //My Language
 grammar MyLanguage;
-start: (statement)+ ;
+
+start: assignment EOF;
 
 //A statement can be an assignment or expression for Deliverable 1
-statement: assignment;
-
 assignment: IDENTIFIER ASSIGNMENT_OPERATOR expression 
-          | IDENTIFIER '=' literal;                 # handles assignment for regular literals
+          | IDENTIFIER '=' literal;                 // handles assignment for regular literals
 
 //Handles the arithmetic operations
 expression: 
-              expression op=('*'|'/') expression    # MulDiv
-            | expression op=('+'|'-') expression    # AddSub
-            | expression op=('%') expression        # Mod
-            | '(' expression ')'                    # Parens
-            | NUMBER                                # Number
-            | IDENTIFIER                            # Variable
+              expression op=(PLUS|MINUS|TIMES|DIVIDE|MOD) expression    // all operations
+            | '(' expression ')'                    // Parens
+            | NUMBER                                // Number
+            | IDENTIFIER                            // Variable
             ;
 
-# literal definition
+// literal definition
 literal: STRING
         | NUMBER
         | IDENTIFIER
@@ -48,12 +45,9 @@ DIVIDE: '/';
 MOD: '%';
 
 //Tokens for literals and identifiers
-STRING: '"' (.)+ '"'
-        | ''' (.)+ ''';
+STRING: '"' ('\\' ["\\] | ~["\\\r\n])* '"';
 NUMBER: [0-9]+ ('.' [0-9]+)? ;
 IDENTIFIER: [a-zA-Z_][a-zA-Z_0-9]* ;
-#INTEGER: [0-9]+;
-#FLOAT: [0-9]*'.'[0-9]+;
 BOOL: 'True'
       | 'False'
       ;
