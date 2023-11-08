@@ -8,7 +8,7 @@ WS: [ \t\r\n]+ -> skip ;
 
 //A statement can be an assignment or expression for Deliverable 1
 statement: IDENTIFIER ASSIGNMENT_OPERATOR expression
-          | IDENTIFIER '=' literal;                 // handles assignment for regular literals
+          | IDENTIFIER '=' LITERAL;                 // handles assignment for regular literals
 
 //Handles the arithmetic operations
 expression: 
@@ -18,26 +18,22 @@ expression:
             | IDENTIFIER                            // Variable
             ;
 
+// Token for arrays since arrays in python can hold anything it just takes a literal
+ARRAY: ARRAY_BEGIN ;
+ARRAY_BEGIN: '[' LITERAL CONTINUE_ARRAY
+            ;
+CONTINUE_ARRAY: ',' LITERAL CONTINUE_ARRAY
+            | END_ARRAY
+            ;
+END_ARRAY: ']';
+
 // literal definition
-literal: STRING
+LITERAL: STRING
         | NUMBER
         | IDENTIFIER
         | BOOL
         | ARRAY
         ;
-
-// Token for arrays
-ARRAY: ARRAY_BEGIN ;
-ARRAY_BEGIN: '[' NUMBER CONTINUE_ARRAY
-            | '[' IDENTIFIER CONTINUE_ARRAY
-            | '[' STRING CONTINUE_ARRAY
-            ;
-CONTINUE_ARRAY: ',' NUMBER CONTINUE_ARRAY
-            | ',' IDENTIFIER CONTINUE_ARRAY
-            | ',' STRING CONTINUE_ARRAY
-            | END_ARRAY
-            ;
-END_ARRAY: ']';
 
 //Tokens for operators
 ASSIGNMENT_OPERATOR: '=' | '+=' | '-=' | '*=' | '/=' ;
