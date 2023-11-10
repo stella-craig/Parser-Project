@@ -17,15 +17,15 @@ public interface MyLanguageListener extends ParseTreeListener {
 	 */
 	void exitStart(MyLanguageParser.StartContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link MyLanguageParser#assignment}.
+	 * Enter a parse tree produced by {@link MyLanguageParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterAssignment(MyLanguageParser.AssignmentContext ctx);
+	void enterStatement(MyLanguageParser.StatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link MyLanguageParser#assignment}.
+	 * Exit a parse tree produced by {@link MyLanguageParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitAssignment(MyLanguageParser.AssignmentContext ctx);
+	void exitStatement(MyLanguageParser.StatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MyLanguageParser#expression}.
 	 * @param ctx the parse tree
@@ -36,14 +36,4 @@ public interface MyLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpression(MyLanguageParser.ExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MyLanguageParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void enterLiteral(MyLanguageParser.LiteralContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MyLanguageParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void exitLiteral(MyLanguageParser.LiteralContext ctx);
 }

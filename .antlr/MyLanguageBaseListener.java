@@ -28,13 +28,13 @@ public class MyLanguageBaseListener implements MyLanguageListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignment(MyLanguageParser.AssignmentContext ctx) { }
+	@Override public void enterStatement(MyLanguageParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignment(MyLanguageParser.AssignmentContext ctx) { }
+	@Override public void exitStatement(MyLanguageParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -47,18 +47,6 @@ public class MyLanguageBaseListener implements MyLanguageListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpression(MyLanguageParser.ExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterLiteral(MyLanguageParser.LiteralContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLiteral(MyLanguageParser.LiteralContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
