@@ -1,14 +1,14 @@
 //My Language
 grammar MyLanguage;
 
-start: statement (NEWLINE statement)*;
+start: statement+;
 
 //A statement can be an assignment or expression for Deliverable 1
 statement: IDENTIFIER ASSIGNMENT_OPERATOR expression ;
 
-//Handles the arithmetic operations
+//Handles expressions
 expression: expression ('+'|'-'|'*'|'/'|'%') expression    // all operations
-            | array_begin
+            | array_begin                                   
             | STRING
             | BOOL
             | INT
@@ -23,10 +23,10 @@ continue_array: ',' (IDENTIFIER|BOOL|INT|FLOAT|STRING) continue_array* ;
 //Tokens for operators
 ASSIGNMENT_OPERATOR: '=' | '+=' | '-=' | '*=' | '/=' ;
 
-NEWLINE: [\n\r]+;
+// NEWLINE: [\n\r]+;
 
 //Ignore whitespace rule
-WS: [ \t]+ -> skip ;
+WS: [ \t\n\r]+ -> skip ;
 
 //Tokens for literals and IDENTIFIERs
 IDENTIFIER: [a-zA-Z][a-zA-Z_0-9]*;
