@@ -1,41 +1,36 @@
 //My Language
 grammar MyLanguage;
 
-start: statement+;
-
-//Ignore whitespace rule
-WS: [ \t\r\n]+ -> skip ;
-
-IDENTIFIER: [a-zA-Z_] [a-zA-Z_0-9]*;
+start: statement (NEWLINE statement)*;
 
 //A statement can be an assignment or expression for Deliverable 1
-statement: IDENTIFIER ASSIGNMENT_OPERATOR (ARRAY_BEGIN|STRING|NUMBER|BOOL|IDENTIFIER|expression) ;
+statement: IDENTIFIER ASSIGNMENT_OPERATOR expression ;
 
 //Handles the arithmetic operations
-expression: 
-              expression op=(PLUS|MINUS|TIMES|DIVIDE|MOD) expression    // all operations
-            | '(' expression ')'                    // Parens
-            | NUMBER                                // Number
-            | IDENTIFIER                            // Variable
+expression: expression ('+'|'-'|'*'|'/'|'%') expression    // all operations
+            | array_begin
+            | STRING
+            | BOOL
+            | INT
+            | FLOAT
+            | IDENTIFIER
             ;
 
 // Token for arrays since arrays in python can hold anything it just takes any string, bool, number, or IDENTIFIER
-ARRAY_BEGIN: '[' (STRING|BOOL|NUMBER) CONTINUE_ARRAY* ']' ;
-CONTINUE_ARRAY: ',' (STRING|BOOL|NUMBER) CONTINUE_ARRAY* ;
+array_begin: '[' (IDENTIFIER|BOOL|INT|FLOAT|STRING) continue_array* ']' ;
+continue_array: ',' (IDENTIFIER|BOOL|INT|FLOAT|STRING) continue_array* ;
 
 //Tokens for operators
 ASSIGNMENT_OPERATOR: '=' | '+=' | '-=' | '*=' | '/=' ;
-PLUS: '+' ;
-MINUS: '-' ;
-TIMES: '*';
-DIVIDE: '/';
-MOD: '%';
 
+NEWLINE: [\n\r]+;
 
+//Ignore whitespace rule
+WS: [ \t]+ -> skip ;
 
 //Tokens for literals and IDENTIFIERs
-NUMBER: [0-9]+ ('.' [0-9]+)? ;
-BOOL: 'True'
-      | 'False'
-      ;
-STRING: '"' IDENTIFIER '"' | '\'' IDENTIFIER '\'' | '"' NUMBER '"' | '\'' NUMBER '\'';
+IDENTIFIER: [a-zA-Z][a-zA-Z_0-9]*;
+INT: [0-9]+;
+FLOAT: [0-9]+'.'[0-9]+;
+BOOL: 'True' | 'False' ;
+STRING: '\'' IDENTIFIER '\'' | '\'' INT '\'' | '\'' FLOAT '\'' | '"' IDENTIFIER '"' | '"' INT '"' | '"' FLOAT '"' ;
