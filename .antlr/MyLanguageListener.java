@@ -36,4 +36,24 @@ public interface MyLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpression(MyLanguageParser.ExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MyLanguageParser#array_begin}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray_begin(MyLanguageParser.Array_beginContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MyLanguageParser#array_begin}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray_begin(MyLanguageParser.Array_beginContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MyLanguageParser#continue_array}.
+	 * @param ctx the parse tree
+	 */
+	void enterContinue_array(MyLanguageParser.Continue_arrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MyLanguageParser#continue_array}.
+	 * @param ctx the parse tree
+	 */
+	void exitContinue_array(MyLanguageParser.Continue_arrayContext ctx);
 }
