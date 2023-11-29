@@ -39,7 +39,7 @@ ASSIGNMENT_OPERATOR: '=' | '+=' | '-=' | '*=' | '/=' ;
 
 
 /* handling conditional statemetns */
-conditional_statement: CONDITION conditional ':' block;
+conditional_statement: CONDITION (conditional)? ':' block;
 conditional:  id (CONDITIONAL_OPERATORS id)* (continue_conditional)*;
 continue_conditional: CONDITIONAL_OPERATORS id ;
 
