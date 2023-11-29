@@ -9,8 +9,8 @@ statement: comment | assignment_statement | conditional_statement | loop_stateme
 //handling loop statements
 loop_statement : while_loop | for_loop ;
 
-while_loop : 'while' conditional ':' block;
-for_loop : 'for' IDENTIFIER 'in' IDENTIFIER ':' | 'for' IDENTIFIER 'in' RANGE ':' ;
+while_loop : 'while' ('(')? conditional (')')? ':' block;
+for_loop : 'for' IDENTIFIER 'in' IDENTIFIER ':' block | 'for' IDENTIFIER 'in' RANGE ':' block;
 
 // handling comments
 comment : COMMENT ;
@@ -39,8 +39,8 @@ ASSIGNMENT_OPERATOR: '=' | '+=' | '-=' | '*=' | '/=' ;
 
 
 /* handling conditional statemetns */
-conditional_statement: CONDITION (conditional)? ':' block;
-conditional:  id CONDITIONAL_OPERATORS id (continue_conditional)* | BOOL;
+conditional_statement: CONDITION conditional ':' block;
+conditional:  id (CONDITIONAL_OPERATORS id)* (continue_conditional)*;
 continue_conditional: CONDITIONAL_OPERATORS id ;
 
 // block underneath a conditional
@@ -66,6 +66,6 @@ INT: ('-')?[0-9]+;
 FLOAT: ('-')?[0-9]+'.'[0-9]+;
 BOOL: 'True' | 'False' ;
 STRING: '\'' [a-zA-Z_0-9]+ ([ ][a-zA-Z_0-9]+)* '\'' | '"' [a-zA-Z_0-9]+ ([ ][a-zA-Z_0-9.']+)* '"' | '"''"'|'\'''\'' ;
-COMMENT : '\'\'\'' ([ a-zA-Z_0-9.'\n\t\r])+ '\'\'\''
+COMMENT : '\'\'\'' ([ a-zA-Z_0-9.',\n\t\r])+ '\'\'\''
             | '#' ([ #a-zA-Z_0-9])+ ([ ][a-zA-Z_0-9]+)* ;
 RANGE : 'range(' INT ',' INT ')' ;
