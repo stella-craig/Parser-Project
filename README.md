@@ -26,6 +26,7 @@ When given an inputted python file, our parser will properly detect arithmetic o
 4. Open a terminal in the directory where the repository is located
 5. First run `antlr4 -Dlanguage=Python3 MyLanguage.g4`
 6. Next, run `antlr4-parse MyLanguage.g4 start -tree -gui [Testcase.py]`
+
 This should give a pop up of a parse tree. There are a few testcases in the repository that work already (ie. project_deliverable_1_testcase.py, project_deliverable_2_testcase.py, and project_deliverable_3_testcase.py), so if you would like to see a working version first please replace [Testcase.py] with those.
 
 ## Other Help
