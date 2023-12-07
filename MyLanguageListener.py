@@ -26,6 +26,24 @@ class MyLanguageListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MyLanguageParser#assignment_statement.
+    def enterAssignment_statement(self, ctx:MyLanguageParser.Assignment_statementContext):
+        pass
+
+    # Exit a parse tree produced by MyLanguageParser#assignment_statement.
+    def exitAssignment_statement(self, ctx:MyLanguageParser.Assignment_statementContext):
+        pass
+
+
+    # Enter a parse tree produced by MyLanguageParser#expression.
+    def enterExpression(self, ctx:MyLanguageParser.ExpressionContext):
+        pass
+
+    # Exit a parse tree produced by MyLanguageParser#expression.
+    def exitExpression(self, ctx:MyLanguageParser.ExpressionContext):
+        pass
+
+
     # Enter a parse tree produced by MyLanguageParser#loop_statement.
     def enterLoop_statement(self, ctx:MyLanguageParser.Loop_statementContext):
         pass
@@ -59,24 +77,6 @@ class MyLanguageListener(ParseTreeListener):
 
     # Exit a parse tree produced by MyLanguageParser#comment.
     def exitComment(self, ctx:MyLanguageParser.CommentContext):
-        pass
-
-
-    # Enter a parse tree produced by MyLanguageParser#assignment_statement.
-    def enterAssignment_statement(self, ctx:MyLanguageParser.Assignment_statementContext):
-        pass
-
-    # Exit a parse tree produced by MyLanguageParser#assignment_statement.
-    def exitAssignment_statement(self, ctx:MyLanguageParser.Assignment_statementContext):
-        pass
-
-
-    # Enter a parse tree produced by MyLanguageParser#expression.
-    def enterExpression(self, ctx:MyLanguageParser.ExpressionContext):
-        pass
-
-    # Exit a parse tree produced by MyLanguageParser#expression.
-    def exitExpression(self, ctx:MyLanguageParser.ExpressionContext):
         pass
 
 
