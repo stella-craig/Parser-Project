@@ -14,7 +14,7 @@ Parser Project for CS 4450 Principles of Programming Languages (Fall 2023) at Mi
 - Patrick Gardner ([@MakingStuffandThings](https://github.com/MakingStuffandThings))
 
 ## Demo Video
-(Insert demo video here!)
+[(Demo video here!)](https://youtu.be/o743JFQYA4E)
 
 ## Our Parser
 When given an inputted python file, our parser will properly detect arithmetic operations, assignment operations, conditional statements, comments, loop statements, and any of the aforementioned nested.
